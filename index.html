@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>yuzesama 的个人主页</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', 'Microsoft YaHei', sans-serif;
+        }
+        
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 20px;
+            color: #333;
+        }
+        
+        .profile-card {
+            width: 100%;
+            max-width: 400px;
+            background-color: white;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(50, 50, 93, 0.1), 0 5px 15px rgba(0, 0, 0, 0.07);
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .profile-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 18px 40px rgba(50, 50, 93, 0.15), 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header {
+            background: linear-gradient(to right, #6a11cb 0%, #2575fc 100%);
+            height: 120px;
+            position: relative;
+            display: flex;
+            justify-content: center;
+        }
+        
+        .avatar-container {
+            position: absolute;
+            top: 60px;
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 5px solid white;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .avatar {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .avatar-placeholder {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #aaa;
+            font-size: 14px;
+            padding: 10px;
+            text-align: center;
+        }
+        
+        .avatar-placeholder i {
+            font-size: 40px;
+            margin-bottom: 10px;
+            color: #bbb;
+        }
+        
+        .content {
+            padding: 80px 30px 30px;
+            text-align: center;
+        }
+        
+        .username {
+            font-size: 28px;
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+        }
+        
+        .title {
+            color: #7f8c8d;
+            font-size: 16px;
+            margin-bottom: 25px;
+            font-weight: 500;
+        }
+        
+        .divider {
+            height: 1px;
+            background: linear-gradient(to right, transparent, #ddd, transparent);
+            margin: 25px 0;
+        }
+        
+        .stats {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 30px;
+        }
+        
+        .stat {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .stat-value {
+            font-size: 24px;
+            font-weight: 700;
+            color: #6a11cb;
+        }
+        
+        .stat-label {
+            font-size: 14px;
+            color: #7f8c8d;
+            margin-top: 5px;
+        }
+        
+        .footer {
+            background-color: #f8f9fa;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            border-top: 1px solid #eee;
+        }
+        
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 10px;
+            color: #6a11cb;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            text-decoration: none;
+            font-size: 18px;
+        }
+        
+        .social-icon:hover {
+            transform: translateY(-5px);
+            background-color: #6a11cb;
+            color: white;
+        }
+        
+        .info-note {
+            background-color: #f8f9ff;
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 20px;
+            font-size: 14px;
+            color: #555;
+            border-left: 4px solid #6a11cb;
+        }
+        
+        @media (max-width: 480px) {
+            .profile-card {
+                max-width: 100%;
+            }
+            
+            .content {
+                padding: 80px 20px 20px;
+            }
+            
+            .stats {
+                flex-direction: column;
+                gap: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="profile-card">
+        <div class="header"></div>
+        
+        <div class="avatar-container">
+            <!-- 头像图片 - 如果1.jpg存在则显示，否则显示占位符 -->
+            <img class="avatar" id="avatar-img" src="1.jpg" alt="yuzesama 的头像" onerror="showAvatarPlaceholder()">
+            <div class="avatar-placeholder" id="avatar-placeholder" style="display: none;">
+                <i class="fas fa-user-circle"></i>
+                <span>1.jpg 未找到</span>
+            </div>
+        </div>
+        
+        <div class="content">
+            <h1 class="username">yuzesama</h1>
+            <p class="title">前端开发者 & 设计爱好者</p>
+            
+            <div class="divider"></div>
+            
+            <p>你好！我是 yuzesama，这是我的个人主页。我喜欢创作美观且功能强大的网页应用。</p>
+            
+            <div class="info-note">
+                <i class="fas fa-info-circle"></i> 提示：如果头像未显示，请确保图片文件 "1.jpg" 与此HTML文件在同一目录下。
+            </div>
+            
+            <div class="stats">
+                <div class="stat">
+                    <span class="stat-value">127</span>
+                    <span class="stat-label">项目</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-value">2.4K</span>
+                    <span class="stat-label">粉丝</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-value">89</span>
+                    <span class="stat-label">作品</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <a href="#" class="social-icon">
+                <i class="fab fa-github"></i>
+            </a>
+            <a href="#" class="social-icon">
+                <i class="fab fa-twitter"></i>
+            </a>
+            <a href="#" class="social-icon">
+                <i class="fab fa-instagram"></i>
+            </a>
+            <a href="#" class="social-icon">
+                <i class="fab fa-linkedin-in"></i>
+            </a>
+        </div>
+    </div>
+
+    <script>
+        // 检查图片是否加载失败，如果失败则显示占位符
+        function showAvatarPlaceholder() {
+            document.getElementById('avatar-img').style.display = 'none';
+            document.getElementById('avatar-placeholder').style.display = 'flex';
+        }
+        
+        // 页面加载时检查图片是否存在
+        document.addEventListener('DOMContentLoaded', function() {
+            const img = document.getElementById('avatar-img');
+            
+            // 如果图片加载失败，显示占位符
+            img.onerror = function() {
+                showAvatarPlaceholder();
+            };
+            
+            // 也可以主动检查图片是否已加载成功
+            if (img.complete && img.naturalHeight === 0) {
+                showAvatarPlaceholder();
+            }
+        });
+        
+        // 添加一些交互效果
+        const socialIcons = document.querySelectorAll('.social-icon');
+        socialIcons.forEach(icon => {
+            icon.addEventListener('click', function(e) {
+                e.preventDefault();
+                const platform = this.querySelector('i').className.split(' ')[1].replace('fa-', '');
+                alert(`您点击了 ${platform} 社交图标（演示功能）`);
+            });
+        });
+    </script>
+</body>
+</html>
