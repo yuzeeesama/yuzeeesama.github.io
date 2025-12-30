@@ -3,185 +3,239 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>yuzesama</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>个人作品集</title>
     <style>
+        /* 全局样式重置 */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', 'Microsoft YaHei', sans-serif;
         }
-        
+
+        /* 全局样式 */
         body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #fff;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* 头部样式 */
+        header {
+            text-align: center;
+            padding: 60px 0 40px;
+        }
+
+        .avatar {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background-color: #f0f0f0;
+            margin: 0 auto 20px;
+            background-image: url('img/yuze.png');
+            background-size: cover;
+            background-position: center;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .bio {
+            font-size: 1.1rem;
+            color: #666;
+            margin-bottom: 30px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* 联系方式样式 */
+        .contact {
             display: flex;
             justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-            padding: 20px;
-            color: #333;
+            gap: 30px;
+            margin-bottom: 60px;
+            flex-wrap: wrap;
         }
-        
-        .profile-card {
-            width: 100%;
-            max-width: 320px;
-            background-color: white;
-            border-radius: 20px;
-            box-shadow: 0 15px 35px rgba(50, 50, 93, 0.1), 0 5px 15px rgba(0, 0, 0, 0.07);
-            overflow: hidden;
+
+        .contact a {
+            color: #666;
+            text-decoration: none;
+            font-size: 1rem;
+            transition: color 0.3s ease;
+        }
+
+        .contact a:hover {
+            color: #4a90e2;
+        }
+
+        /* 项目展示样式 */
+        .projects {
+            margin-bottom: 80px;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            margin-bottom: 40px;
+            text-align: center;
+            font-weight: 600;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .project-card {
+            background-color: #fafafa;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
-        
-        .profile-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 18px 40px rgba(50, 50, 93, 0.15), 0 8px 20px rgba(0, 0, 0, 0.1);
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
         }
-        
-        .header {
-            background: linear-gradient(to right, #6a11cb 0%, #2575fc 100%);
-            height: 100px;
-            position: relative;
-            display: flex;
-            justify-content: center;
-        }
-        
-        .avatar-container {
-            position: absolute;
-            top: 50px;
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            border: 5px solid white;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-            overflow: hidden;
-            background-color: #f0f0f0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        
-        .avatar {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        
-        .avatar-placeholder {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            color: #aaa;
-            font-size: 14px;
-            padding: 10px;
-            text-align: center;
-        }
-        
-        .avatar-placeholder i {
-            font-size: 40px;
+
+        .project-card h3 {
+            font-size: 1.4rem;
             margin-bottom: 10px;
-            color: #bbb;
+            font-weight: 600;
         }
-        
-        .content {
-            padding: 70px 30px 30px;
-            text-align: center;
+
+        .project-description {
+            color: #666;
+            margin-bottom: 20px;
+            font-size: 0.95rem;
         }
-        
-        .username {
-            font-size: 28px;
-            font-weight: 700;
-            color: #2c3e50;
-            margin-bottom: 25px;
-            letter-spacing: 1px;
-        }
-        
-        .footer {
-            background-color: #f8f9fa;
-            padding: 20px;
+
+        .tech-tags {
             display: flex;
-            justify-content: center;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+
+        .tech-tag {
+            background-color: #e0e0e0;
+            color: #555;
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .project-link {
+            display: inline-block;
+            color: #4a90e2;
+            text-decoration: none;
+            font-weight: 500;
+            transition: opacity 0.3s ease;
+        }
+
+        .project-link:hover {
+            opacity: 0.8;
+        }
+
+        /* 底部样式 */
+        footer {
+            text-align: center;
+            padding: 40px 0;
+            color: #999;
+            font-size: 0.9rem;
             border-top: 1px solid #eee;
         }
-        
-        .github-button {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background-color: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #6a11cb;
-            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
-            transition: all 0.3s ease;
-            text-decoration: none;
-            font-size: 22px;
-        }
-        
-        .github-button:hover {
-            transform: translateY(-5px);
-            background-color: #6a11cb;
-            color: white;
-        }
-        
-        @media (max-width: 480px) {
-            .profile-card {
-                max-width: 100%;
+
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
             }
-            
-            .content {
-                padding: 70px 20px 20px;
+
+            .bio {
+                font-size: 1rem;
+            }
+
+            .contact {
+                gap: 20px;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .project-card {
+                padding: 25px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header {
+                padding: 40px 0 30px;
+            }
+
+            .avatar {
+                width: 120px;
+                height: 120px;
+            }
+
+            h1 {
+                font-size: 1.8rem;
+            }
+
+            .contact {
+                gap: 15px;
+            }
+
+            .projects {
+                margin-bottom: 60px;
             }
         }
     </style>
 </head>
 <body>
-    <div class="profile-card">
-        <div class="header"></div>
+    <!-- 头部 -->
+    <header>
+        <div class="avatar"></div>
+        <h1>雨泽</h1>
+        <p class="bio">这个人很懒什么都没留下。</p>
         
-        <div class="avatar-container">
-            <!-- 头像图片 - 如果1.png存在则显示，否则显示占位符 -->
-            <img class="avatar" id="avatar-img" src="1.png" alt="yuzesama 的头像" onerror="showAvatarPlaceholder()">
-            <div class="avatar-placeholder" id="avatar-placeholder" style="display: none;">
-                <i class="fas fa-user-circle"></i>
-                <span>1.png 未找到</span>
-            </div>
+        <!-- 联系方式 -->
+        <div class="contact">
+            <a href="https://github.com/yuzeeesama" target="_blank">GitHub</a>
         </div>
-        
-        <div class="content">
-            <h1 class="username">yuzesama</h1>
-            
-            <div class="footer">
-                <a href="https://github.com" class="github-button" target="_blank">
-                    <i class="fab fa-github"></i>
-                </a>
-            </div>
-        </div>
-    </div>
+    </header>
 
-    <script>
-        // 检查图片是否加载失败，如果失败则显示占位符
-        function showAvatarPlaceholder() {
-            document.getElementById('avatar-img').style.display = 'none';
-            document.getElementById('avatar-placeholder').style.display = 'flex';
-        }
-        
-        // 页面加载时检查图片是否存在
-        document.addEventListener('DOMContentLoaded', function() {
-            const img = document.getElementById('avatar-img');
-            
-            // 如果图片加载失败，显示占位符
-            img.onerror = function() {
-                showAvatarPlaceholder();
-            };
-            
-            // 也可以主动检查图片是否已加载成功
-            if (img.complete && img.naturalHeight === 0) {
-                showAvatarPlaceholder();
-            }
-        });
-    </script>
+    <!-- 项目展示 -->
+    <section class="projects">
+        <h2>项目</h2>
+        <div class="projects-grid">
+            <!-- 项目1 -->
+            <div class="project-card">
+                <h3>个人博客系统</h3>
+                <p class="project-description">一个基于静态生成器的个人博客，支持Markdown写作和自定义主题。</p>
+                <div class="tech-tags">
+                    <span class="tech-tag">Python</span>
+                    <span class="tech-tag">Flask</span>
+                    <span class="tech-tag">HTML/CSS</span>
+                </div>
+                <a href="https://github.com/yuzeeesama/blog" class="project-link" target="_blank">查看代码</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 底部 -->
+    <footer>
+        <p>© 2024 雨泽. All rights reserved.</p>
+    </footer>
 </body>
 </html>
