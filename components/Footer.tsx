@@ -7,9 +7,7 @@ const Footer: React.FC = () => {
       <p className="text-slate-400 text-sm">
         © {PROFILE.year} {PROFILE.name}. All rights reserved.
       </p>
-      <p className="text-slate-300 text-xs mt-2">
-        Built with React & Tailwind
-      </p>
+
     </footer>
   );
 };
