@@ -9,5 +9,5 @@ export interface Project {
 export interface SocialLink {
   platform: string;
   url: string;
-  icon?: React.ReactNode;
+  icon?: string;
 }
