@@ -1,10 +1,11 @@
 import { Project, SocialLink } from './types';
+import yuzePng from './img/yuze.png';
 
 export const PROFILE = {
   name: "雨泽",
   englishName: "Yuze",
   bio: "这个人很懒什么都没留下。",
-  avatar: "img/yuze.png", // Assuming this path exists from your original HTML
+  avatar: yuzePng,
   year: 2026,
 };
 
